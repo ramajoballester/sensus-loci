@@ -1,0 +1,5 @@
+mmcv-full==1.6.2
+mmdet
+mmdet3d
+mmsegmentation
+torch==1.12.1
