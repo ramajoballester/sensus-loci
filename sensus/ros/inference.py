@@ -3,10 +3,10 @@ import numpy as np
 
 from argparse import ArgumentParser
 from mmdet3d.apis import inference_detector, init_model
-from mmdet3d.core.points import get_points_type
-from mmdetection3d import data, demo, configs, checkpoints
+import sensus
 from sensus.utils.data_converter import pc2pc_object
-
+from mmdet3d.utils import register_all_modules
+from mmdetection3d import data, demo, configs, checkpoints
 
 
 def main():
@@ -25,9 +25,12 @@ def main():
 
     args = parser.parse_args()
 
+    # register all modules in mmdet3d into the registries
+    register_all_modules()
+
     ## Substitute the following lines with the ros lidar message
-    pcd_path = os.path.join(demo.__path__[0],
-        'data/kitti/kitti_000008.bin')
+    pcd_path = os.path.join(os.path.dirname(sensus.__path__[0]),
+        args.pcd)
     with open(pcd_path, 'rb') as f:
         points = np.fromfile(f, dtype=np.float32, count=-1)
     ################################
@@ -35,11 +38,11 @@ def main():
     # build the model from a config file and a checkpoint file
     model = init_model(args.config, args.checkpoint, device=args.device)
 
-    pc_object = pc2pc_object(points, model.cfg.data.test.pipeline)
+    pc_object, pc = pc2pc_object(points, model.cfg.test_pipeline)
+    print(pc_object)
 
     # test with a single point cloud
-    result, data = inference_detector(model, pc_object)
-    print(len(result))
+    result, data = inference_detector(model, pc)
     print(result)
 
 
