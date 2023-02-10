@@ -87,3 +87,13 @@ $$ y_{image} = P_2 * R_{0\_rect} * T_{r\_velo\_to\_cam} * x_{velo} $$
 Online with Open3D: issue when there is no connected display monitor. TODO: run it headless.
 
 Offline locally with Meshlab loading the .obj files.
+
+TODO: visualization with another visualizer object
+
+
+# Roadmap
+
+- :white_large_square Use kitti models with custom configs for infrastructure (ros)
+- :white_check_mark: Create custom dataset for infrastructure (DAIR-V2X-I)
+
+Create a checkbox list:
