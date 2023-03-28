@@ -4,7 +4,7 @@
 # Installation
 
 ```
-git clone -b dev https://github.com/ramajoballester/sensus-loci.git
+git clone https://github.com/ramajoballester/sensus-loci.git
 cd sensus-loci
 git submodule init
 git submodule update
