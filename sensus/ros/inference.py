@@ -3,7 +3,9 @@ import numpy as np
 
 from argparse import ArgumentParser
 from mmdet3d.apis import inference_detector, init_model
-from mmdet3d.core.points import get_points_type
+import sensus
+from sensus.utils.data_converter import pc2pc_object
+from mmdet3d.utils import register_all_modules
 from mmdetection3d import data, demo, configs, checkpoints
 from sensus.utils.data_converter import pc2pc_object
 
@@ -27,6 +29,9 @@ def main():
         help='show online visualization results')
 
     args = parser.parse_args()
+
+    # register all modules in mmdet3d into the registries
+    register_all_modules()
 
     ## Substitute the following lines with the ros lidar message
     pcd_path = os.path.join(demo.__path__[0],
@@ -54,7 +59,8 @@ def main():
     # build the model from a config file and a checkpoint file
     model = init_model(args.config, args.checkpoint, device=args.device)
 
-    pc_object = pc2pc_object(points, model.cfg.data.test.pipeline)
+    pc_object, pc = pc2pc_object(points, model.cfg.test_pipeline)
+    print(pc_object)
 
     # test with a single point cloud
     result, _ = inference_detector(model, pc_object)
