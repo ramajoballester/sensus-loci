@@ -3,14 +3,41 @@
 
 # Installation
 
-Option 1. Install [MMDetection3D](https://mmdetection3d.readthedocs.io/en/latest/getting_started.html)
+```
+git clone -b dev https://github.com/ramajoballester/sensus-loci.git
+cd sensus-loci
+git submodule init
+git submodule update
+cd mmdetection3d
+git checkout 1.1
+```
 
-- Requires python 3.8
+With conda (or your favorite virtual environment manager) install the latest version of python 3.8:
 
-Option 2. Init gitmodules and source mmdet_install.sh from sensus-loci root directory
+```
+conda install python=3.8.*
+```
 
-- Problems with compiling wheels for: ```mim install mmcv-full``` are due to pytorch shipping nvcc in the latest release. Fix it by indicating its true path 
+Install pytorch 1.13 with GPU support from the [official website](https://pytorch.org/get-started/previous-versions/).
+
+After that, install the rest of the dependencies, from inside mmdection3d directory:
+
+```
+pip install -U openmim
+mim install mmengine
+mim install 'mmcv>=2.0.0rc0'
+mim install 'mmdet>=3.0.0rc0'
+git clone https://github.com/open-mmlab/mmdetection3d.git -b dev-1.x
+cd mmdetection3d
+pip install -e .
+```
+
+## Known issues
+
+- Problems with **compiling** wheels for: ```mim install mmcv-full``` are due to pytorch shipping nvcc in the latest release. Fix it by indicating its true path 
 ```export PATH=/usr/local/cuda/bin:$PATH```. Bug [#2684](https://github.com/microsoft/DeepSpeed/issues/2684)
+
+
 
 
 # Linear algebra review
@@ -46,13 +73,13 @@ Composition of transformations:
     - ```image_2/```: contains left color images in png format
     - ```label_2/```: contains 2D and 3D bounding boxes in txt format. For each row, the annotation of each object is provided with 15 columns camera coordinates:
     ```type | truncation | visibility | observation angle | xmin | ymin |xmax | ymax | height | width | length | tx | ty | tz | roty```
-    - ```velodyne/```: contains point clouds in bin format. Each point is a 4-element vector: x, y, z, intensity.
+    - ```velodyne/```: contains point clouds in bin format. Each point is a 4-element vector: ```x, y, z, intensity```.
 - ```testing/```: contains 7518 testing samples (without label_2)
 
 
 **calib files**:
 - PX: projection matrix from rectified camera coordinate to image coordinate. Camera 0 is the reference camera coordinate.
-- R0_rect: rectification matrix from camera coordinate to rectified camera coordinate.
+- R0_rect: rectification matrix from camera coordinate to rectified camera coordinate. Remember that the camera rig is intended for stereo vision.
 - Tr_velo_to_cam: transformation matrix from velodyne to camera coordinate
 - Tr_imu_to_velo: transformation matrix from imu to velodyne coordinate
 
@@ -76,6 +103,9 @@ $$ y_{image} = P_2 * R_{0\_rect} * T_{r\_velo\_to\_cam} * x_{velo} $$
 3. Create ground truth database
 
 
+## Inference
+
+
 
 # NuScenes Dataset
 
@@ -93,7 +123,9 @@ TODO: visualization with another visualizer object
 
 # Roadmap
 
-- :white_large_square Use kitti models with custom configs for infrastructure (ros)
-- :white_check_mark: Create custom dataset for infrastructure (DAIR-V2X-I)
-
-Create a checkbox list:
+- [ ] Point cloud range is in KITTI lidar coordinate system (x: forward, y: left, z: up).
+- [ ] ROS-based inference should forward input point cloud through test pipeline. In the meantime, model will output directly from input point cloud.
+- [ ] Use kitti models with custom configs for infrastructure (ros)
+    - [ ] Compare raw and processed point clouds in KITTI
+    - [ ] Compare them with ROS point clouds
+- [ ] Create custom dataset for infrastructure (DAIR-V2X-I)
