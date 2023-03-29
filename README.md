@@ -27,10 +27,16 @@ pip install -U openmim
 mim install mmengine
 mim install 'mmcv>=2.0.0rc0'
 mim install 'mmdet>=3.0.0rc0'
-git clone https://github.com/open-mmlab/mmdetection3d.git -b dev-1.x
-cd mmdetection3d
 pip install -e .
 ```
+
+After installing mmdetection3d, install sensus-loci. To do so, go back to the root directory of the project:
+
+```
+cd ..
+pip install -e .
+```
+
 
 ## Known issues
 
