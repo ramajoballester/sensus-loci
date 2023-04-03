@@ -66,3 +66,28 @@ entry_points={
 # Notes
 
 - Install [vision_msgs package manually for source compiled ROS2](https://github.com/ros-perception/vision_msgs)
+
+## Conda-ROS compatibility
+- Suspect that ```source ros2_humble/install/setup.bash``` is sourcing local workspace 
+somehow
+- Adding 
+```
+[build_scripts]
+executable = /usr/bin/env python3
+```
+to ```setup.cfg``` in local workspace solved the conda-ROS compatibility issue
+- Activating conda env before ```colcon build``` does not change behaviour
+
+
+# Experiments
+
+- a1: +6
+- a2: +8
+- a3: +10
+- a4: +4 (acceptable)
+- a5: +2 (slightly worse than a4)
+- a6: +4 (+3 was terrible)
+- a7: +5 (awful)
+- a8: +4.5 (bit worse than a4)
+- a9: +3.5 (worse than a4)
+- a10: +4.25
