@@ -1,4 +1,4 @@
-## Execution
+## Execution (legacy)
 
 ``` python sensus/ros/inference.py mmdetection3d/demo/data/kitti/kitti_000008.bin mmdetection3d/configs/pointpillars/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class.py mmdetection3d/checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class_20220301_150306-37dc2420.pth ```
 
@@ -58,4 +58,11 @@ entry_points={
 ``` ros2 run ros_sensus python_script_name ```
 
 
-TODO: Dependencies setuptools<58.3.0
+# TODO
+
+- [ ] Transform each bbox3d to bbox3d array for visualization
+- [ ] Adapt point cloud to KITTI characteristics to improve accuracy
+
+# Notes
+
+- Install [vision_msgs package manually for source compiled ROS2](https://github.com/ros-perception/vision_msgs)

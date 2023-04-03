@@ -22,6 +22,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'marker_viz = ros_sensus.marker_visualizer:main',
+            'bbox_viz = ros_sensus.bbox_visualizer:main',
+            'ros_inference = ros_sensus.ros_inference:main',
+            'pc_publisher = ros_sensus.pc_publisher:main'
         ],
     },
 )
