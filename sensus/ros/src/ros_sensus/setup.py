@@ -14,6 +14,9 @@ setup(
     install_requires=[
         'setuptools<58.3.0'
     ],
+    # Currently the ros package does not take into account the
+    # setuptools version, so we need to force it to be less than 58.3.0 via 
+    # command line
     zip_safe=True,
     maintainer='Álvaro Ramajo-Ballester',
     maintainer_email='aramajo@pa.uc3m.es',
