@@ -1,9 +1,25 @@
-## Execution (legacy)
+# Installation
 
-``` python sensus/ros/inference.py mmdetection3d/demo/data/kitti/kitti_000008.bin mmdetection3d/configs/pointpillars/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class.py mmdetection3d/checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-3class_20220301_150306-37dc2420.pth ```
+From ```sensus-loci/sensus/ros```:
 
+```
+colcon build
+source ./install/setup.bash
+```
 
-``` python sensus/ros/inference.py mmdetection3d/data/nuscenes/samples/LIDAR_TOP/n008-2018-05-21-11-06-59-0400__LIDAR_TOP__1526915243047392.pcd.bin mmdetection3d/configs/centerpoint/centerpoint_0075voxel_second_secfpn_dcn_circlenms_4x8_cyclic_20e_nus.py mmdetection3d/checkpoints/centerpoint_0075voxel_second_secfpn_dcn_circlenms_4x8_cyclic_20e_nus_20220810_025930-657f67e0.pth ```
+# Execution
+
+Perception manager reads PointCloud2 messages from ```pointcloud_topic``` defined in ```src/ros_sensus/config/ros/perception_manager_config.json``` and publishes perception_interfaces/msg/Detection messages to ```detection_topic```:
+
+```
+ros2 run ros_sensus perception_manager
+```
+
+Perception visualizer reads from ```detection_topic``` and publishes ```vision_msgs/msg/BoundingBox3DArray``` messages to ```visualization_topic```, so they can be visualized in RViz2:
+
+```
+ros2 run ros_sensus perception_visualizer
+```
 
 
 # Package creation ROS2
@@ -97,3 +113,5 @@ to ```setup.cfg``` in local workspace solved the conda-ROS compatibility issue
 - nus_3: circle_nms voxel 0.075 +0 (no detections)
 - nus_4: circle_nms voxel 0.075 +3 (worse than nus_1)
 - nus_5: circle_nms voxel 0.075 +5 (same as nus_4)
+
+- perception_manager_viz
