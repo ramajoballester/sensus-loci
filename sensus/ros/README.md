@@ -91,3 +91,9 @@ to ```setup.cfg``` in local workspace solved the conda-ROS compatibility issue
 - a8: +4.5 (bit worse than a4)
 - a9: +3.5 (worse than a4)
 - a10: +4.25
+
+- nus_1: circle_nms voxel 0.075 +4 (best)
+- nus_2: rotate nms voxel 0.075 +4 (bit worse than nus_1)
+- nus_3: circle_nms voxel 0.075 +0 (no detections)
+- nus_4: circle_nms voxel 0.075 +3 (worse than nus_1)
+- nus_5: circle_nms voxel 0.075 +5 (same as nus_4)

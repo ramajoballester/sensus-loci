@@ -27,7 +27,8 @@ setup(
         'console_scripts': [
             'marker_viz = ros_sensus.marker_visualizer:main',
             'bbox_viz = ros_sensus.bbox_visualizer:main',
-            'ros_inference = ros_sensus.ros_inference:main',
+            'perception_manager = ros_sensus.perception_manager:main',
+            'perception_visualizer = ros_sensus.perception_visualizer:main',
             'pc_publisher = ros_sensus.pc_publisher:main'
         ],
     },
