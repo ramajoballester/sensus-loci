@@ -37,6 +37,9 @@ cd ..
 pip install -e .
 ```
 
+To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros``` and follow the instructions for [ROS2 installation](./sensus/ros).
+
+
 
 ## Known issues
 
