@@ -2,6 +2,8 @@
     "pointcloud_topic": "/roundabout/velodyne_64_points",
     "detection_topic": "/detections",
     "visualization_topic": "/object_vizualization",
+    "frame_id": "velodyne",
+    "min_detection_score": 0.4,
 
     "detection_model_cfg": "centerpoint/centerpoint_voxel0075_second_secfpn_head-circlenms_8xb4-cyclic-20e_nus-3d.py",
     "detection_model_checkpoint": "centerpoint_0075voxel_second_secfpn_circlenms_4x8_cyclic_20e_nus_20220810_011659-04cb3a3b.pth",

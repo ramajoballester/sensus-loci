@@ -168,14 +168,16 @@ class ObjectDetector(Node):
         vel_list = []
         
         for i, bbox_pred in enumerate(detection_preds.pred_instances_3d.bboxes_3d.tensor.tolist()):
-            type_hyp, bbox_hyp, vel_hyp = self.create_detection_msg(
-                bbox_pred,
-                detection_preds.pred_instances_3d.scores_3d[i].item(),
-                detection_preds.pred_instances_3d.labels_3d[i].item()
-            )
-            type_list.append(type_hyp)
-            bbox_list.append(bbox_hyp)
-            vel_list.append(vel_hyp)
+            # Filter out detections with low confidence score
+            if detection_preds.pred_instances_3d.scores_3d[i].item() > self.cfg['min_detection_score']:
+                type_hyp, bbox_hyp, vel_hyp = self.create_detection_msg(
+                    bbox_pred,
+                    detection_preds.pred_instances_3d.scores_3d[i].item(),
+                    detection_preds.pred_instances_3d.labels_3d[i].item()
+                )
+                type_list.append(type_hyp)
+                bbox_list.append(bbox_hyp)
+                vel_list.append(vel_hyp)
 
         detection.hypothesis.type_hypothesis = type_list
         detection.hypothesis.bbox_hypothesis = bbox_list
