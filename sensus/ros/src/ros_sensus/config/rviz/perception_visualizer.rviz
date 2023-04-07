@@ -66,7 +66,7 @@ Visualization Manager:
       Max Color: 255; 255; 255
       Max Intensity: 0.9554223418235779
       Min Color: 0; 0; 0
-      Min Intensity: 0.6304231882095337
+      Min Intensity: 0.6189389824867249
       Name: PointCloud2
       Position Transformer: XYZ
       Selectable: true
@@ -97,7 +97,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /detections
+        Value: /object_vizualization
       Value: true
   Enabled: true
   Global Options:
@@ -145,16 +145,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 218.69296264648438
+      Distance: 131.14915466308594
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 1.031619668006897
+        Y: -1.1886118650436401
+        Z: 0.11101052165031433
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
