@@ -1,6 +1,9 @@
 # sensus-loci
 3D object detection from infrastructure
 
+![Real-time visualization of the 3D object detection with ROS](docs/images/ros_example.png)
+
+
 # Installation
 
 ```
