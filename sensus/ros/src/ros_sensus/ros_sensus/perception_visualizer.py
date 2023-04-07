@@ -84,6 +84,7 @@ class Visualizer(Node):
         bboxes = BoundingBox3DArray()
         bboxes.header = Header()
         bboxes.header.stamp = self.get_clock().now().to_msg()
+        bboxes.header.frame_id = msg.header.frame_id
 
         # Convert Detection ROS message to BoundingBox3DArray
         for i in range(len(msg.hypothesis.bbox_hypothesis)):
