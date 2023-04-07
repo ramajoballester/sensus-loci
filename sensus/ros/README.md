@@ -1,6 +1,6 @@
 # Installation
 
-From ```sensus-loci/sensus/ros```:
+From ```perception_manager/sensus/ros```:
 
 ```
 colcon build
@@ -21,6 +21,13 @@ Perception visualizer reads from ```detection_topic``` and publishes ```vision_m
 ros2 run ros_sensus perception_visualizer
 ```
 
+# Visualization
+
+From ```perception_manager/sensus/ros```:
+
+```
+rviz2 -d ./src/ros_sensus/config/rviz/perception_visualizer.rviz
+```
 
 # Package creation ROS2
 
