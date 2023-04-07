@@ -1,6 +1,6 @@
 # Installation
 
-From ```sensus-loci/sensus/ros```:
+From ```perception_manager/sensus/ros```:
 
 ```
 colcon build

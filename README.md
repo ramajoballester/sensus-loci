@@ -1,11 +1,12 @@
-# sensus-loci
+# Perception Manager
+
 3D object detection from infrastructure
 
 # Installation
 
 ```
-git clone https://github.com/ramajoballester/sensus-loci.git
-cd sensus-loci
+git clone https://github.com/lsiteam/perception_manager.git
+cd perception_manager
 git submodule init
 git submodule update
 cd mmdetection3d
@@ -30,7 +31,7 @@ mim install 'mmdet>=3.0.0rc0'
 pip install -e .
 ```
 
-After installing mmdetection3d, install sensus-loci. To do so, go back to the root directory of the project:
+After installing mmdetection3d, install perception_manager. To do so, go back to the root directory of the project:
 
 ```
 cd ..
