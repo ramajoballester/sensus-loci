@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/license/ramajoballester/sensus-loci)
 
-3D object detection from infrastructure
+3D object detection from infrastructure for autonomous driving
 
 
 ![Real-time visualization of the 3D object detection with ROS](docs/images/ros_example.png)
@@ -47,12 +47,22 @@ pip install -e .
 To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros``` and follow the instructions for [ROS2 installation](./sensus/ros).
 
 
-
 ## Known issues
 
 - Problems with **compiling** wheels for: ```mim install mmcv-full``` are due to pytorch shipping nvcc in the latest release. Fix it by indicating its true path 
 ```export PATH=/usr/local/cuda/bin:$PATH```. Bug [#2684](https://github.com/microsoft/DeepSpeed/issues/2684)
 
+
+# Citation
+
+```BibTeX
+@software{ramajo2023sensus,
+  title={Sensus-loci: 3D object detection from infrastructure for autonomous driving},
+  author={Ramajo-Ballester, Álvaro},
+  url={https://github.com/ramajoballester/sensus-loci},
+  year={2023}
+}
+```
 
 
 
