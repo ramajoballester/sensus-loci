@@ -69,7 +69,8 @@ class LidarVisualizer:
     
     def rotate_box(self, box, rotation_y):
         center = box.get_center()
-        rotation = box.get_rotation_matrix_from_xyz((0, 0, -rotation_y - np.pi/2))
+        # rotation = box.get_rotation_matrix_from_xyz((0, 0, -rotation_y - np.pi/2))
+        rotation = box.get_rotation_matrix_from_xyz((0, 0, +rotation_y))
         box.rotate(rotation, center=center)
         return box
     
