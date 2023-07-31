@@ -1,5 +1,6 @@
 dataset_type = 'KittiDataset'
 data_root = '/home/javier/datasets/kitti/'
+
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 input_modality = dict(use_lidar=False, use_camera=True)
 metainfo = dict(classes=class_names)

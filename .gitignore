@@ -1,3 +1,7 @@
+
+work_dirs/
+*.pth
+
 # VSCode workspace
 *.code-workspace
 .vscode
