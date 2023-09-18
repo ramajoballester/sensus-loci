@@ -56,6 +56,12 @@ train_pipeline = [
         type='GlobalRotScaleTrans',
         rot_range=[-0.78539816, 0.78539816],
         scale_ratio_range=[0.95, 1.05]),
+        
+    # New Augmentations compatible with KITTI
+    dict(type='PointShuffle'),
+    dict(type='RandomFlip3D', flip_ratio_bev_vertical=0.5),
+
+    # This is from the original config
     dict(type='PointsRangeFilter', point_cloud_range=point_cloud_range),
     dict(type='ObjectRangeFilter', point_cloud_range=point_cloud_range),
     dict(type='PointShuffle'),

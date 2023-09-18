@@ -1,3 +1,5 @@
+import pickle
+
 class DataProcessor:
     def __init__(self, labels_path, calib_path):
         self.labels_path = labels_path
@@ -39,3 +41,23 @@ class DataProcessor:
                 elif line[0] == 'Tr_imu_to_velo:':
                     calib['Tr_imu_to_velo'] = [float(line[i]) for i in range(1, len(line))]
         return calib
+
+def create_pkl(file_name, calib_file, cam_type = 'CAM_BACK', pkl_path = 'data.pkl'):
+    # Get the camera to image matrix
+    array = DataProcessor(None, calib_file).process_calib_file()['P2']
+
+    # Remove the last 3 elements of the array
+    indices_to_remove = [3, 7, 11]
+    array = [array[i] for i in range(len(array)) if i not in indices_to_remove]
+
+    # Reshape the array into a 3x3 matrix
+    cam2img = [array[i:i+3] for i in range(0, len(array), 3)]
+
+    # Create the data dictionary
+    data = [{'images': {cam_type: {'img_path': f'{file_name}.png', 'cam2img': cam2img}}}]
+
+    # Save data to the pkl file
+    with open(pkl_path, "wb") as file:
+        pickle.dump(data, file)
+
+    print(f"Data saved to {pkl_path}")

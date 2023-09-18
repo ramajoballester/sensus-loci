@@ -75,7 +75,7 @@ class LidarVisualizer:
         box.rotate(rotation, center=center)
         return box
     
-    def generate_bbox_from_label(self, label):
+    def generate_bbox_from_label(self, label, color=[1, 0, 0]):
         """
         Generate bbox from label dict.
 
@@ -99,7 +99,7 @@ class LidarVisualizer:
         
         lines = o3d.geometry.LineSet.create_from_triangle_mesh(box)
         lines.lines = o3d.utility.Vector2iVector(np.array([[0, 1], [2, 0], [2, 3], [3, 1], [4, 5], [4, 6], [6, 7], [7, 5], [0, 4], [1, 5], [2, 6], [3, 7]]))
-        lines.paint_uniform_color([1, 0, 0])
+        lines.paint_uniform_color(color)
         
         return lines
     
@@ -167,6 +167,39 @@ class LidarVisualizer:
         for car in cars:
             lines.append(self.generate_bbox_from_label(car))
             self.generate_img(car)
+
+        # Draw bbox into point cloud
+        draw([self.pcd_bin, *lines], width=900, height=600, point_size=2)
+
+    def draw_cars_from_monodet_result(self, results):
+        """
+        Draws num_cars from label file.
+
+        Parameters
+        ----------
+        labels: str
+            path to labels file
+        calib: str
+            path to calibration file
+        num_cars: int
+            number of cars to draw
+        """
+
+        cars_result = []
+        for result in results:
+            cars_result.append(result)
+
+        lines = []
+        for car in cars_result:
+            lines.append(self.generate_bbox_from_label(car, color = [0, 1, 0]))
+
+        cars_labels = []
+        for label in self.labels:
+            if label['type'] == 'Car':
+                cars_labels.append(label)
+
+        for car in cars_labels:
+            lines.append(self.generate_bbox_from_label(car, color = [1, 0, 0]))
 
         # Draw bbox into point cloud
         draw([self.pcd_bin, *lines], width=900, height=600, point_size=2)
@@ -340,3 +373,26 @@ def draw_monodetection_results(img_file, calib, results, score, pitch, thickness
     viz.load_calib(calib)
     viz.load_results(results)
     viz.draw_monodetection_results(score, pitch, thickness=thickness)
+
+def adapt_monodetresult_to_label(result):
+    result_adapted = {
+        'type': 'Car',
+        'location': result[:3].tolist(),
+        'dimensions': result[3:6].tolist(),
+        'rotation_y': result[6].item()
+    }
+    result_adapted['dimensions'] = list([result_adapted['dimensions'][1], result_adapted['dimensions'][2], result_adapted['dimensions'][0]])
+    return result_adapted
+
+def adapt_monodetresults_to_labels(results):
+    results_adapted = []
+    for result in results:
+        results_adapted.append(adapt_monodetresult_to_label(result))
+    return results_adapted
+
+def draw_monorestults_in_lidar(bin_path, calib, results, img_path, labels):
+    results_adapted = adapt_monodetresults_to_labels(results.pred_instances_3d.bboxes_3d.tensor.to('cpu').detach().numpy())
+    viz = LidarVisualizer(bin_path, img_path)
+    viz.load_calib(calib)
+    viz.load_labels(labels)
+    viz.draw_cars_from_monodet_result(results_adapted)
