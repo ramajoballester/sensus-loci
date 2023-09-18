@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sensus"
+version = "0.2.0"
+authors = [
+    {name="ramajoballester", email="aramajo@ing.uc3m.es"},
+]
+description = "3D object detection from infrastructure for autonomous driving"
+readme = "README.md"
+# requires-python = ">=3.8,<3.10"
+requires-python = "==3.8.*"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    # "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    # "Programming Language :: Python :: 3.9",
+    # "Programming Language :: Python :: 3.10",
+    # "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+]
+
+keywords = [
+    "python",
+    "pytorch",
+    "deep-learning",
+    "computer-vision",
+]
+
+dependencies = [
+    "mmcv>=2.0.0rc4",
+    "mmdet>=3.0.0",
+    "mmdet3d>=1.1.0",
+    "mmengine",
+]
+
+[project.optional-dependencies]
+dev = [
+
+]
+test = [
+
+]
+
+[tool.setuptools.packages]
+# find = {include = ["sensus"]}
+find = {namespaces = false, exclude = ["test"]}
+
+[project.urls]
+"Homepage" = "https://github.com/ramajoballester/sensus-loci"
+"Bug Tracker" = "https://github.com/ramajoballester/sensus-loci/issues"
