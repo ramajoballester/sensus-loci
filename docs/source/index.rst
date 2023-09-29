@@ -1,5 +1,6 @@
-Welcome to sensus-loci's documentation!
+Sensus-loci Documentation
 =======================================
+
 
 **Sensus-loci** is a Python library for 3D object detection and pose estimation 
 for autonomous driving.
@@ -26,6 +27,4 @@ Contents
 
    readme
    api
-   ros_readme
-
    

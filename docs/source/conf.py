@@ -34,7 +34,8 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx.ext.viewcode',
     'sphinx_markdown_tables',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    # 'sphinx_design'
 ]
 
 intersphinx_mapping = {
@@ -48,6 +49,9 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 # html_theme = 'pytorch_sphinx_theme'
+# html_theme = 'furo'
+# html_theme = 'sphinx_material'
+
 
 
 html_theme_options = {
@@ -57,6 +61,15 @@ html_theme_options = {
 # github_url = 'https://github.com/ramajoballester/sensus-loci'
 html_baseurl = 'https://sensus-loci.readthedocs.io/en/latest/'
 html_favicon = '../images/favicon.ico'
+
+html_show_sourcelink = False
+# html_link_suffix = ''
+
+
+# html_sidebars = {
+#    '**': ['globaltoc.html', 'localtoc.html', 'searchbox.html'],
+#    'using/windows': ['windowssidebar.html', 'searchbox.html'],
+# }
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
@@ -69,3 +82,6 @@ autodoc_default_options = {
 }
 
 # add_module_names = False
+
+# Set the custom template name
+html_additional_pages = {'layout': 'layout.html'}
