@@ -1,14 +1,10 @@
 # Get started
 
-![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Framajoballester%2Fsensus-loci%2Fmain%2Fpyproject.toml)
-![Read the Docs](https://img.shields.io/readthedocs/arb-tutorial-template)
-![GitHub](https://img.shields.io/github/license/ramajoballester/sensus-loci)
 
 
 3D object detection from infrastructure for autonomous driving
 
 
-![Real-time visualization of the 3D object detection with ROS](/docs/images/ros_example.png)
 
 
 ## Installation
