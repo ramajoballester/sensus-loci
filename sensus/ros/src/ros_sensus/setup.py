@@ -12,7 +12,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
     ],
     install_requires=[
-        'setuptools<58.3.0'
+        'setuptools>=65.5.1'
     ],
     # Currently the ros package does not take into account the
     # setuptools version, so we need to force it to be less than 58.3.0 via 
