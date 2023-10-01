@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/ramajoballester/sensus-loci)
 
 
-3D object detection from infrastructure for autonomous driving
+3D object detection from infrastructure for autonomous driving. Check the [documentation](https://sensus-loci.readthedocs.io/en/latest/) for more information.
 
 
 ![Real-time visualization of the 3D object detection with ROS](/docs/images/ros_example.png)
