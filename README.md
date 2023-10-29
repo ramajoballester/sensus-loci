@@ -30,6 +30,12 @@ After installing mmdetection3d, install sensus-loci:
 pip install -e .
 ```
 
+For full documentation building support, install the full version of the package:
+
+```
+pip install -e .[full]
+```
+
 ## ROS 2 support
 
 To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros``` and follow the instructions for [ROS2 installation](ros_readme.md).
