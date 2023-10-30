@@ -4,6 +4,24 @@ from mmdet3d.datasets.transforms.loading import LoadPointsFromFile
 
 
 def pc2pc_object(pc, pipeline):
+    """
+    Convert point cloud to PointCloud2 object :class:`sensus.tools.Dummy`
+
+    Parameters
+    ----------
+    pc : np.ndarray
+        Point cloud in numpy array format
+    pipeline : list[dict]
+        Pipeline configuration
+
+    Returns
+    -------
+    pc_object : PointCloud2
+        Point cloud in PointCloud2 object format
+    pc : np.ndarray
+        Point cloud in numpy array format    
+    """
+    
     pipeline_dict = {**pipeline[0]}
     assert pipeline_dict['type'] == 'LoadPointsFromFile'
     pipeline_dict.pop('type')

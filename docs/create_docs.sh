@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf ./docs/build
+
 # Define input and output file paths
 input_file="./README.md"
 output_file="./docs/source/readme.md"

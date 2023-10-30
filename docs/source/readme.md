@@ -2,7 +2,7 @@
 
 
 
-3D object detection from infrastructure for autonomous driving
+3D object detection from infrastructure for autonomous driving. Check the [documentation](https://sensus-loci.readthedocs.io/en/latest/) for more information.
 
 
 
@@ -24,6 +24,12 @@ After installing mmdetection3d, install sensus-loci:
 
 ```
 pip install -e .
+```
+
+For full documentation building support, install the full version of the package:
+
+```
+pip install -e .[full]
 ```
 
 ## ROS 2 support

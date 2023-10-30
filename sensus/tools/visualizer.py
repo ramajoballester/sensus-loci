@@ -2,7 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import open3d as o3d
-from open3d.web_visualizer import draw
+# import only if from a jupyter notebook
+try:
+    _ = get_ipython().__class__.__name__
+    from open3d.web_visualizer import draw
+except:
+    print('Environment is not a jupyter notebook: open3d.web_visualizer is not imported')
 import cv2
 import numpy as np
 from mmengine.config import Config
@@ -10,8 +15,9 @@ import os.path as osp
 from mmdet3d.utils import register_all_modules
 from mmdet3d.datasets import *
 
+from .data_processor import DataProcessor
 
-from data_processor import DataProcessor
+__all__ = ['ImageVisualizer', 'draw_monodetection_labels', 'draw_monodetection_results']
 
 class LidarVisualizer:
     def __init__(self, bin_path, img_path):

@@ -6,7 +6,7 @@ from open3d.web_visualizer import draw
 import cv2
 import numpy as np
 
-from data_processor import DataProcessor
+from .data_processor import DataProcessor
 
 class LidarVisualizer:
     def __init__(self, bin_path, img_path):
