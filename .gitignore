@@ -5,6 +5,7 @@ work_dirs/
 *.jpg
 *.pkl
 *.pickle
+*.mp4
 
 # VSCode workspace
 *.code-workspace

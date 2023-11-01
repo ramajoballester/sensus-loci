@@ -9,6 +9,9 @@ source ./install/setup.bash
 
 # Execution
 
+Note: ros environment must be sourced before running any jupyter notebook. Therefore, as VSCode does not support sourcing ~/.bashrc, it is necessary to start the kernel in a terminal and connect to it from VSCode.
+
+
 Perception manager reads PointCloud2 messages from ```pointcloud_topic``` defined in ```src/ros_sensus/config/ros/perception_manager_config.json``` and publishes perception_interfaces/msg/Detection messages to ```detection_topic```:
 
 ```
