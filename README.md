@@ -36,13 +36,73 @@ For full documentation building support, install the full version of the package
 pip install -e .[full]
 ```
 
+## Open3D build with Jupyter support
+
+Rebuild with all the packages installed in system
+
+1. Install `cmake` (from [kitware repository](https://apt.kitware.com/)) and `gcc` (latest version with conda?)
+2. Install npm, yarn and nodejs:
+
+```
+sudo apt install npm
+sudo npm install -g yarn
+sudo npm install -g n
+sudo n stable
+```
+
+3. Download the [Open3D](https://github.com/isl-org/Open3D) source code:
+
+```
+git clone https://github.com/isl-org/Open3D.git
+cd Open3D
+```
+
+4. Install system dependencies from `Open3D/util/install_deps_ubuntu.sh `
+
+Maybe install OSMesa for headless support and GLFW (?):
+
+```
+sudo apt-get install libosmesa6-dev
+sudo apt-get install libglfw3 ?
+```
+
+It might be required to reboot.
+
+5. Activate conda and install dependencies:
+
+```
+pip install -r python/requirements_build.txt
+pip install -r python/requirements_jupyter_build.txt
+```
+
+6. Build Open3D
+
+```
+mkdir build && cd build
+```
+
+Build with Jupyter support:
+```
+cmake -DBUILD_JUPYTER_EXTENSION=ON ..
+```
+
+With headless support:
+```
+cmake -DENABLE_HEADLESS_RENDERING=ON \
+    -DBUILD_GUI=OFF \
+    -DBUILD_WEBRTC=OFF \
+    -DUSE_SYSTEM_GLEW=OFF \
+    -DUSE_SYSTEM_GLFW=OFF \
+    ..
+```
+
+7. Install Open3D
+
+```
+make install-pip-package -j$(nproc)
+```
+
+
 ## ROS 2 support
 
 To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros``` and follow the instructions for [ROS2 installation](ros_readme.md).
-
-
-## Known issues
-
-- Downgrade numba to 0.55 to avoid cuda drivers version mismatch. Seems solved.
-- Problems with **compiling** wheels for: ```mim install mmcv-full``` are due to pytorch shipping nvcc in the latest release. Fix it by indicating its true path 
-```export PATH=/usr/local/cuda/bin:$PATH```. Bug [#2684](https://github.com/microsoft/DeepSpeed/issues/2684)
