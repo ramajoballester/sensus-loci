@@ -1,42 +1,42 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ['setuptools', 'setuptools-scm']
+build-backend = 'setuptools.build_meta'
 
 [project]
-name = "sensus-loci"
-version = "0.2.0"
+name = 'sensus-loci'
+version = '0.2.0'
 authors = [
-    {name="Álvaro Ramajo-Ballester", email="aramajo@ing.uc3m.es"},
+    {name='Álvaro Ramajo-Ballester', email='aramajo@ing.uc3m.es'},
 ]
-description = "3D object detection from infrastructure for autonomous driving"
-readme = "README.md"
-# requires-python = ">=3.8,<3.10"
-requires-python = "==3.8.*"
+description = '3D object detection from infrastructure for autonomous driving'
+readme = 'README.md'
+# requires-python = '>=3.8,<3.10'
+requires-python = '==3.8.*'
 classifiers = [
-    "Programming Language :: Python :: 3",
-    # "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    # "Programming Language :: Python :: 3.9",
-    # "Programming Language :: Python :: 3.10",
-    # "Programming Language :: Python :: 3.11",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
-    "Natural Language :: English",
-    "Operating System :: POSIX :: Linux",
+    'Programming Language :: Python :: 3',
+    # 'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    # 'Programming Language :: Python :: 3.9',
+    # 'Programming Language :: Python :: 3.10',
+    # 'Programming Language :: Python :: 3.11',
+    'License :: OSI Approved :: GNU Affero General Public License v3',
+    'Natural Language :: English',
+    'Operating System :: POSIX :: Linux',
 ]
 
 keywords = [
-    "python",
-    "pytorch",
-    "deep-learning",
-    "computer-vision",
+    'python',
+    'pytorch',
+    'deep-learning',
+    'computer-vision',
 ]
 
 dependencies = [
     'torch',
-    "mmcv>=2.0.0rc4",
-    "mmdet>=3.0.0",
-    "mmdet3d>=1.1.0",
-    "mmengine",
+    'mmcv>=2.0.0rc4',
+    'mmdet>=3.0.0',
+    'mmdet3d>=1.1.0',
+    'mmengine',
 ]
 
 [project.optional-dependencies]
@@ -59,9 +59,20 @@ docs = [
 full = ['sensus-loci[dev,docs]']
 
 [tool.setuptools.packages]
-# find = {include = ["sensus"]}
-find = {namespaces = false, exclude = ["test"]}
+# find = {include = ['sensus']}
+find = {namespaces = false, exclude = ['test']}
+
+
+[tool.ruff]
+line-length = 79
+# extend-select = ['Q']
+ignore = ['F401']
+
+[tool.ruff.format]
+# Prefer single quotes over double quotes.
+quote-style = 'single'
+
 
 [project.urls]
-"Homepage" = "https://github.com/ramajoballester/sensus-loci"
-"Bug Tracker" = "https://github.com/ramajoballester/sensus-loci/issues"
+'Homepage' = 'https://github.com/ramajoballester/sensus-loci'
+'Bug Tracker' = 'https://github.com/ramajoballester/sensus-loci/issues'
