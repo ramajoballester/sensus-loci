@@ -7,8 +7,7 @@ model = dict(
         voxel=True,
         voxel_layer=dict(
             max_num_points=5,
-            point_cloud_range=[0, -40, -3, 70.4, 40, 1],
-            # point_cloud_range=[0, -40, -9, 70.4, 40, -4],
+            point_cloud_range=[0, -40, -7, 70.4, 40, -2],
             voxel_size=voxel_size,
             max_voxels=(16000, 40000))),
     voxel_encoder=dict(type='HardSimpleVFE'),

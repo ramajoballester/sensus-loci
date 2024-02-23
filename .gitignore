@@ -7,6 +7,8 @@ work_dirs/
 *.pickle
 *.mp4
 
+sensus/data
+
 # VSCode workspace
 *.code-workspace
 .vscode
