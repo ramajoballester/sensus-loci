@@ -2,7 +2,7 @@
 dataset_type = 'KittiDataset'
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/infrastructure-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
-point_cloud_range = [0, -40, -3, 70.4, 40, 1]
+point_cloud_range = [0, -50, -2, 100, 50, 1]
 input_modality = dict(use_lidar=True, use_camera=False)
 metainfo = dict(classes=class_names)
 
