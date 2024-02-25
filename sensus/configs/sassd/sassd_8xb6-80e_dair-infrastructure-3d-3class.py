@@ -1,5 +1,5 @@
 _base_ = [
-    '../_base_/datasets/dair-infrastructure-3d-3class.py',
+    '../_base_/datasets/dair-infrastructure-lidar-reduced-3d-3class.py',
     '../_base_/schedules/cyclic-40e.py', '../_base_/default_runtime.py'
 ]
 
@@ -12,7 +12,7 @@ model = dict(
         voxel=True,
         voxel_layer=dict(
             max_num_points=5,
-            point_cloud_range=[0, -60, -2, 200, 60, 1],
+            point_cloud_range=[0, -40, -3, 70.4, 40, 1],
             voxel_size=voxel_size,
             max_voxels=(16000, 40000))),
     voxel_encoder=dict(type='HardSimpleVFE'),
@@ -41,9 +41,9 @@ model = dict(
         anchor_generator=dict(
             type='Anchor3DRangeGenerator',
             ranges=[
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -1.78, 200, 60, -1.78],
+                [0, -40, -0.6, 70, 40, -0.6],
+                [0, -40, -0.6, 70, 40, -0.6],
+                [0, -40, -1.78, 70, 40, -1.78],
             ],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],
