@@ -1,7 +1,12 @@
+_base_ = [
+    '../_base_/datasets/dair-infrastructure-3d-3class.py',
+    '../_base_/schedules/cyclic-40e.py', '../_base_/default_runtime.py'
+]
+
 voxel_size = [0.05, 0.05, 0.1]
 
 model = dict(
-    type='VoxelNet',
+    type='SASSD',
     data_preprocessor=dict(
         type='Det3DDataPreprocessor',
         voxel=True,
@@ -12,7 +17,7 @@ model = dict(
             max_voxels=(16000, 40000))),
     voxel_encoder=dict(type='HardSimpleVFE'),
     middle_encoder=dict(
-        type='SparseEncoder',
+        type='SparseEncoderSASSD',
         in_channels=4,
         sparse_shape=[41, 1600, 1408],
         order=('conv', 'norm', 'act')),
@@ -36,9 +41,9 @@ model = dict(
         anchor_generator=dict(
             type='Anchor3DRangeGenerator',
             ranges=[
-                [0, -40.0, -0.6, 70.4, 40.0, -0.6],
-                [0, -40.0, -0.6, 70.4, 40.0, -0.6],
-                [0, -40.0, -1.78, 70.4, 40.0, -1.78],
+                [0, -60, -0.6, 200, 60, -0.6],
+                [0, -60, -0.6, 200, 60, -0.6],
+                [0, -60, -1.78, 200, 60, -1.78],
             ],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],
