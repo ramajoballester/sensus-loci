@@ -37,6 +37,7 @@ dependencies = [
     'mmdet>=3.0.0',
     'mmdet3d>=1.1.0',
     'mmengine',
+    'seaborn'
 ]
 
 [project.optional-dependencies]
