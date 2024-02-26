@@ -203,7 +203,22 @@ To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros`
 - Numpy has to be downgraded to 1.22 #2821  (1.23 also works)
 - Numba == 0.57.*
 
+## NCCL
+
+RuntimeError: NCCL communicator was aborted on rank 1. Original reason for failure was: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=15560, OpType=BROADCAST, Timeout(ms)=1800000) ran for 1807962 milliseconds before timing out.
+```
+export NCCL_IB_GID_INDEX=3
+```
+
 
 # TODO
 
+- Adjust velodyne reduced ranges
 - Create infos for DAIR-V2X classes. Currently, they are KITTI classes.
+
+
+
+mmcv       2.1.0      https://github.com/open-mmlab/mmcv
+mmdet      3.3.0      https://github.com/open-mmlab/mmdetection
+mmdet3d    1.4.0      /home/breaststroker/alvaro/sensus-loci/mmdetection3d
+mmengine   0.10.3  
