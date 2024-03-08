@@ -1,10 +1,10 @@
 _base_ = [
-    '../_base_/models/pointpillars_hv_secfpn_kitti.py',
-    '../_base_/datasets/dair-infrastructure-lidar-reduced-3d-3class.py',
+    '../_base_/models/pointpillars_hv_secfpn_dair-infrastructure.py',
+    '../_base_/datasets/dair-infrastructure-3d-3class.py',
     '../_base_/schedules/cyclic-40e.py', '../_base_/default_runtime.py'
 ]
 
-point_cloud_range = [0, -39.68, -3, 69.12, 39.68, 1]
+point_cloud_range = [0, -60, -2, 200, 60, 1]
 # dataset settings
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/infrastructure-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']

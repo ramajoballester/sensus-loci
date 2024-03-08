@@ -7,7 +7,7 @@ model = dict(
         voxel=True,
         voxel_layer=dict(
             max_num_points=5,
-            point_cloud_range=[0, -60, -2, 200, 60, 1],
+            point_cloud_range=[0, -150, -2, 150, 150, 1],
             voxel_size=voxel_size,
             max_voxels=(16000, 40000))),
     voxel_encoder=dict(type='HardSimpleVFE'),
@@ -36,9 +36,9 @@ model = dict(
         anchor_generator=dict(
             type='Anchor3DRangeGenerator',
             ranges=[
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -1.78, 200, 60, -1.78],
+                [0, -150, -0.6, 150, 150, -0.6],
+                [0, -150, -0.6, 150, 150, -0.6],
+                [0, -150, -1.78, 150, 150, -1.78],
             ],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],

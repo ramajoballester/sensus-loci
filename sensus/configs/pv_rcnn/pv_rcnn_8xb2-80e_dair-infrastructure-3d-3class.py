@@ -1,10 +1,10 @@
 _base_ = [
-    '../_base_/datasets/dair-infrastructure-lidar-reduced-3d-3class.py',
+    '../_base_/datasets/dair-infrastructure-3d-3class.py',
     '../_base_/schedules/cyclic-40e.py', '../_base_/default_runtime.py'
 ]
 
 voxel_size = [0.05, 0.05, 0.1]
-point_cloud_range = [0, -40, -3, 70.4, 40, 1]
+point_cloud_range = [0, -60, -2, 200, 60, 1]
 
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/infrastructure-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
@@ -161,9 +161,9 @@ model = dict(
         dir_offset=0.78539,
         anchor_generator=dict(
             type='Anchor3DRangeGenerator',
-            ranges=[[0, -40.0, -0.6, 70.4, 40.0, -0.6],
-                    [0, -40.0, -0.6, 70.4, 40.0, -0.6],
-                    [0, -40.0, -1.78, 70.4, 40.0, -1.78]],
+            ranges=[[0, -60, -0.6, 200, 60, -0.6],
+                    [0, -60, -0.6, 200, 60, -0.6],
+                    [0, -60, -1.78, 200, 60, -1.78]],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],
             reshape_out=False),
@@ -368,6 +368,6 @@ param_scheduler = [
         convert_to_iter_based=True)
 ]
 
-train_cfg = dict(by_epoch=True, val_interval=1)
+train_cfg = dict(by_epoch=True, val_interval=2)
 val_cfg = dict()
 test_cfg = dict()
