@@ -200,8 +200,17 @@ To install the ros_sensus ROS2 package, go to the ros directory ```./sensus/ros`
 
 # Known issues
 
+## Package versions
+
 - Numpy has to be downgraded to 1.22 #2821  (1.23 also works)
 - Numba == 0.57.*
+
+## MMDetection3D
+
+When running test.py, add this for the results prefix:
+```
+--cfg-options test_evaluator.pklfile_prefix=../sensus/output/
+```
 
 ## NCCL
 
@@ -213,6 +222,8 @@ export NCCL_IB_GID_INDEX=3
 
 # TODO
 
+- Fix roty angle in DAIR-V2X kittiformat
+- Transform jpg to png in DAIR-V2X kittiformat
 - Adjust velodyne reduced ranges
 - Create infos for DAIR-V2X classes. Currently, they are KITTI classes.
 

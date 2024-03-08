@@ -1,6 +1,5 @@
 dataset_type = 'KittiDataset'
-data_root = '/home/javier/datasets/kitti/'
-
+data_root = 'data/kitti/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 input_modality = dict(use_lidar=False, use_camera=True)
 metainfo = dict(classes=class_names)
@@ -50,8 +49,7 @@ eval_pipeline = [
 ]
 
 train_dataloader = dict(
-    # batch_size=2,
-    batch_size=4,
+    batch_size=2,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
