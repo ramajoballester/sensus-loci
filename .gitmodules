@@ -1,9 +1,6 @@
 [submodule "mmdetection3d"]
 	path = mmdetection3d
 	url = https://github.com/ramajoballester/mmdetection3d.git
-[submodule "sensus/ros/src/perception_interfaces"]
-	path = sensus/ros/src/perception_interfaces
-	url = git@github.com:lsiteam/perception_interfaces.git
 [submodule "sensus/tools/dataset_converter/DAIR-V2X"]
 	path = sensus/tools/dataset_converter/DAIR-V2X
 	url = https://github.com/AIR-THU/DAIR-V2X.git
