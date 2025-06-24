@@ -4,7 +4,7 @@ _base_ = [
 ]
 
 voxel_size = [0.05, 0.05, 0.1]
-point_cloud_range = [0, -150, -2, 150, 150, 1]
+point_cloud_range = [0, -60, -2, 100, 60, 1]
 
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/vehicle-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
@@ -161,9 +161,9 @@ model = dict(
         dir_offset=0.78539,
         anchor_generator=dict(
             type='Anchor3DRangeGenerator',
-            ranges=[[0, -150, -0.6, 150, 150, -0.6],
-                    [0, -150, -0.6, 150, 150, -0.6],
-                    [0, -150, -1.78, 150, 150, -1.78]],
+            ranges=[[0, -60, -0.6, 100, 60, -0.6],
+                    [0, -60, -0.6, 100, 60, -0.6],
+                    [0, -60, -1.78, 100, 60, -1.78]],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],
             reshape_out=False),

@@ -4,7 +4,7 @@ _base_ = [
     '../_base_/schedules/cyclic-40e.py', '../_base_/default_runtime.py'
 ]
 
-point_cloud_range = [0, -60, -2, 200, 60, 1]
+point_cloud_range = [0, -60.16, -2, 140.80, 60.16, 1]
 # dataset settings
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/infrastructure-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
@@ -20,7 +20,7 @@ db_sampler = dict(
         filter_by_difficulty=[-1],
         filter_by_min_points=dict(Car=5, Pedestrian=5, Cyclist=5)),
     classes=class_names,
-    sample_groups=dict(Car=15, Pedestrian=15, Cyclist=15),
+    sample_groups=dict(Car=30, Pedestrian=15, Cyclist=15),
     points_loader=dict(
         type='LoadPointsFromFile',
         coord_type='LIDAR',
@@ -83,7 +83,7 @@ val_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 # In practice PointPillars also uses a different schedule
 # optimizer
 lr = 0.001
-epoch_num = 80
+epoch_num = 120
 optim_wrapper = dict(
     optimizer=dict(lr=lr), clip_grad=dict(max_norm=35, norm_type=2))
 param_scheduler = [
@@ -125,6 +125,6 @@ param_scheduler = [
 # PointPillars usually need longer schedule than second, we simply double
 # the training schedule. Do remind that since we use RepeatDataset and
 # repeat factor is 2, so we actually train 160 epochs.
-train_cfg = dict(by_epoch=True, max_epochs=epoch_num, val_interval=2)
+train_cfg = dict(by_epoch=True, max_epochs=epoch_num, val_interval=1)
 val_cfg = dict()
 test_cfg = dict()

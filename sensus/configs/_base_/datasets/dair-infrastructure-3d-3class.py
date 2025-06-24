@@ -2,7 +2,7 @@
 dataset_type = 'KittiDataset'
 data_root = 'data/DAIR-V2X/cooperative-vehicle-infrastructure-kittiformat/infrastructure-side/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
-point_cloud_range = [0, -60, -2, 200, 60, 1]
+point_cloud_range = [0, -60.16, -2, 140.80, 60.16, 1]
 input_modality = dict(use_lidar=True, use_camera=False)
 metainfo = dict(classes=class_names)
 
@@ -101,7 +101,7 @@ eval_pipeline = [
     dict(type='Pack3DDetInputs', keys=['points'])
 ]
 train_dataloader = dict(
-    batch_size=16,
+    batch_size=4,
     num_workers=2,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),

@@ -1,4 +1,4 @@
-voxel_size = [0.16, 0.16, 4]
+voxel_size = [0.16, 0.16, 3]
 
 model = dict(
     type='VoxelNet',
@@ -7,18 +7,21 @@ model = dict(
         voxel=True,
         voxel_layer=dict(
             max_num_points=32,  # max_points_per_voxel
-            point_cloud_range=[0, -60, -2, 200, 60, 1],
+            point_cloud_range=[0, -60.16, -2, 140.80, 60.16, 1],
+            # point_cloud_range=[0, -39.68, -3, 69.12, 39.68, 1],
             voxel_size=voxel_size,
-            max_voxels=(16000, 40000))),
+            max_voxels=(100000, 100000))),
     voxel_encoder=dict(
         type='PillarFeatureNet',
         in_channels=4,
         feat_channels=[64],
         with_distance=False,
         voxel_size=voxel_size,
-        point_cloud_range=[0, -60, -2, 200, 60, 1]),
+        point_cloud_range=[0, -60.16, -2, 140.80, 60.16, 1]),
+        # point_cloud_range=[0, -39.68, -3, 69.12, 39.68, 1]),
     middle_encoder=dict(
-        type='PointPillarsScatter', in_channels=64, output_shape=[496, 432]),
+        type='PointPillarsScatter', in_channels=64, output_shape=[880, 752]),
+        # type='PointPillarsScatter', in_channels=64, output_shape=[496, 432]),
     backbone=dict(
         type='SECOND',
         in_channels=64,
@@ -40,9 +43,9 @@ model = dict(
         anchor_generator=dict(
             type='AlignedAnchor3DRangeGenerator',
             ranges=[
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -0.6, 200, 60, -0.6],
-                [0, -60, -1.78, 200, 60, -1.78],
+                [0, -60.16, -0.6, 140.80, 60.16, -0.6],
+                [0, -60.16, -0.6, 140.80, 60.16, -0.6],
+                [0, -60.16, -1.78, 140.80, 60.16, -1.78],
             ],
             sizes=[[0.8, 0.6, 1.73], [1.76, 0.6, 1.73], [3.9, 1.6, 1.56]],
             rotations=[0, 1.57],
