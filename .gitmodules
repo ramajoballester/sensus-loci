@@ -4,3 +4,6 @@
 [submodule "sensus/tools/dataset_converter/DAIR-V2X"]
 	path = sensus/tools/dataset_converter/DAIR-V2X
 	url = https://github.com/AIR-THU/DAIR-V2X.git
+[submodule "pypcd"]
+	path = pypcd
+	url = https://github.com/klintan/pypcd.git
