@@ -7,3 +7,6 @@
 [submodule "pypcd"]
 	path = pypcd
 	url = https://github.com/klintan/pypcd.git
+[submodule "sensus/tools/dataset_converter/tum-traffic-dataset-dev-kit"]
+	path = sensus/tools/dataset_converter/tum-traffic-dataset-dev-kit
+	url = https://github.com/tum-traffic-dataset/tum-traffic-dataset-dev-kit.git
