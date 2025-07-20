@@ -10,3 +10,6 @@
 [submodule "sensus/tools/dataset_converter/tum-traffic-dataset-dev-kit"]
 	path = sensus/tools/dataset_converter/tum-traffic-dataset-dev-kit
 	url = https://github.com/tum-traffic-dataset/tum-traffic-dataset-dev-kit.git
+[submodule "sensus/tools/dataset_converter/DAIR-RCooper"]
+	path = sensus/tools/dataset_converter/DAIR-RCooper
+	url = https://github.com/AIR-THU/DAIR-RCooper.git
